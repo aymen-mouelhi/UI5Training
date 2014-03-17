@@ -231,7 +231,11 @@
       <created>1395081404974</created>
       <updated>1395081404974</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Training UI5">
+      <created>1395082277189</created>
+      <updated>1395082277189</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
