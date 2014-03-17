@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Some Demo HTML</title>
+
+    <script type="text/javascript">
+        /*
+         function AnonymousDynamicClass(){
+         }
+
+         function Country(){
+         this.name = "France";
+         this.displayInformation = function(){
+         console.log("Country name: " + this.name);
+         }
+         }
+
+         // Instantiation of the class
+         var object = new AnonymousDynamicClass(); // could be done using new Object(); or var object = {name : "some name"};
+         // Set Attribute
+         object.name = "aymen";
+         object.date = "01/01/1986";
+         object.sayHello = function(){
+         console.log("nice?");
+         };
+         object.pays = function(country){
+         // Dynamically define country as attribute of the object "object"
+         this.country = country;
+         country.displayInformation();
+         }
+
+         var country = new Country();
+
+         // Set country attribute
+         object.pays(country);
+         console.log(object.country);
+         object.sayHello();
+
+
+         function taxCalulation(country, rate) {
+         this.amount = this.salary * rate;
+         }
+
+         function Tax() {
+         this.salary = 1000;
+         this.rate = 0.4;
+         this.amount = 0;
+         this.TaxCalculation = function (country, rate) {
+
+         }
+         }
+
+         var taxAmount = new Tax();
+         console.log("Initial Amount to be paid:" + taxAmount.amount);0
+         taxCalulation.apply(taxAmount, ["france", 0.4 ]); // We could also use taxCalulation.call(taxAmount, "france", 0.4 );
+
+         console.log("Amount that should be paid: " + taxAmount.amount);
+         */
+        function Tax() {
+            this.salary = 1000;
+            this.rate = 0.4;
+            this.amount = 0;
+            // Define prototype in the object definition
+            // Can only be done when object is instanciated
+            if(typeof Tax.initialized  == "undefined"){
+                Tax.prototype.calculateTax= function (country, rate) {
+                        this.amount = this.salary * this.rate;
+                        console.log(this.amount);
+                    }
+            }
+        }
+
+        /**
+         * Normal way to create prototypes
+         * @type {{calculateTax: Function}}
+         */
+        /*
+        Tax.prototype = {
+            calculateTax: function (country, rate) {
+                this.amount = this.salary * this.rate;
+                console.log(this.amount);
+            }
+        };
+        */
+
+        var taxAmount = new Tax();
+        console.log(taxAmount);
+
+        taxAmount.calculateTax("france", 0.4);
+
+        // taxCalulation.apply(taxAmount, ["france", 0.4 ]);
+        console.log(taxAmount);
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
