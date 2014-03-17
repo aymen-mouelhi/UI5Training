@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>Some Demo HTML</title>
-
+    <script type="text/javascript" src ="dom.js"></script>
     <script type="text/javascript">
         /*
          function AnonymousDynamicClass(){
@@ -62,11 +62,11 @@
             this.amount = 0;
             // Define prototype in the object definition
             // Can only be done when object is instanciated
-            if(typeof Tax.initialized  == "undefined"){
-                Tax.prototype.calculateTax= function (country, rate) {
-                        this.amount = this.salary * this.rate;
-                        console.log(this.amount);
-                    }
+            if (typeof Tax.initialized == "undefined") {
+                Tax.prototype.calculateTax = function (country, rate) {
+                    this.amount = this.salary * this.rate;
+                    console.log(this.amount);
+                }
             }
         }
 
@@ -75,25 +75,66 @@
          * @type {{calculateTax: Function}}
          */
         /*
-        Tax.prototype = {
-            calculateTax: function (country, rate) {
-                this.amount = this.salary * this.rate;
-                console.log(this.amount);
+         Tax.prototype = {
+         calculateTax: function (country, rate) {
+         this.amount = this.salary * this.rate;
+         console.log(this.amount);
+         }
+         };
+
+
+         var taxAmount = new Tax();
+         console.log(taxAmount);
+
+         taxAmount.calculateTax("france", 0.4);
+
+         // taxCalulation.apply(taxAmount, ["france", 0.4 ]);
+         console.log(taxAmount);
+         */
+
+        function Tax(salary, rate) {
+            this.salary = 1000;
+            this.rate = 0.4;
+            this.amount = 0;
+            if (typeof Tax.initialized == "undefined") {
+                Tax.prototype.display = function () {
+                    console.log("in mother class");
+                }
             }
-        };
-        */
 
-        var taxAmount = new Tax();
-        console.log(taxAmount);
+        }
 
-        taxAmount.calculateTax("france", 0.4);
+        function ChildTax(salary, rate, valid) {
+            Tax.call(this, salary, rate);
+            // Add new attribute
+            this.salary = salary;
+            this.rate = rate;
+            this.isValid = valid;
+        }
 
-        // taxCalulation.apply(taxAmount, ["france", 0.4 ]);
-        console.log(taxAmount);
+        ChildTax.prototype = new Tax();
 
+        //var motherTax = new Tax();
+        var childTax = new ChildTax("france", 0.4, true);
+
+        //console.log(motherTax);
+        console.log(childTax);
+        childTax.display();
+
+        /*
+         taxCalulation.apply(taxAmount, ["france", 0.4 ]);
+         console.log(taxAmount);
+         */
+
+        // Create dynamic Content
     </script>
 </head>
 <body>
+<div id="div" class="content">
 
+</div>
+<script type="text/javascript">
+    createDOM();
+</script>
 </body>
 </html>

@@ -11,9 +11,6 @@ function Tax(){
     this.salary = 1000;
     this.rate   = 0.4;
     this.amount = 0;
-    this.TaxCalculation = function(country, rate){
-
-    }
 }
 
 var taxAmount = new Tax();
